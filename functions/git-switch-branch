@@ -54,28 +54,6 @@ check_uncommitted_changes() {
     ! git diff-index --quiet HEAD 2>/dev/null
 }
 
-get_ahead_behind_status() {
-    local branch="$1"
-    local upstream
-
-    upstream=$(git rev-parse --abbrev-ref "$branch@{upstream}" 2>/dev/null)
-
-    if [[ -z "$upstream" ]]; then
-        echo ""
-        return
-    fi
-
-    local ahead behind
-    ahead=$(git rev-list --count "$upstream..$branch" 2>/dev/null || echo "0")
-    behind=$(git rev-list --count "$branch..$upstream" 2>/dev/null || echo "0")
-
-    if [[ "$ahead" == "0" && "$behind" == "0" ]]; then
-        echo ""
-    else
-        echo "↑$ahead ↓$behind"
-    fi
-}
-
 get_branches_with_info() {
     local current_branch="$1"
     local include_remote="$2"
@@ -104,21 +82,10 @@ get_branches_with_info() {
             continue
         fi
 
-        local sync_status
-        sync_status=$(get_ahead_behind_status "$branch")
-
-        local status_display=""
-        if [[ -n "$sync_status" ]]; then
-            status_display=$(printf "\033[36m%-8s\033[0m" "$sync_status")
-        else
-            status_display=$(printf "%-8s" "")
-        fi
-
-        printf "%-35s  \033[90m(%s)\033[0m  %s  %s\n" \
+        printf "%-35s  \033[90m(%s)\033[0m  %s\n" \
             "$branch" \
             "$date" \
-            "$status_display" \
-            "${message:0:50}"
+            "${message:0:60}"
     done
 }
 
