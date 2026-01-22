@@ -2,6 +2,9 @@
 
 Interactive git branch switching tool for ZSH with a beautiful UI.
 
+![git-switch-branches](https://github.com/user-attachments/assets/6fadadd4-142a-4fa0-af17-e98d34fe4a85)
+
+
 ## Features
 
 - 🎯 **Interactive selection** - Navigate branches with ease using gum
@@ -11,24 +14,6 @@ Interactive git branch switching tool for ZSH with a beautiful UI.
 - ⚡ **Fast navigation** - Keyboard-driven interface with search
 - 🌐 **Remote branches** - Optionally include and checkout remote branches
 - 🎨 **Beautiful UI** - Clean, modern interface with colors
-
-## Preview
-
-```
-🔀 Interactive Branch Switcher
-
-Current branch: main
-⚠️  Uncommitted changes detected
-
-Select a branch to switch to:
-
-  feature/new-ui         (2 hours ago)    ↑2 ↓1       Update button styles
-  bugfix/login          (yesterday)      ↑0 ↓3       Fix validation error
-  develop               (3 days ago)     ↑0 ↓15      Update dependencies
-
-🔄 Switching to: feature/new-ui
-✅ Successfully switched to: feature/new-ui
-```
 
 ## Installation
 
