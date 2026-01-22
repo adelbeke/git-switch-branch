@@ -104,12 +104,12 @@ get_branches_with_info() {
             continue
         fi
 
-        local status
-        status=$(get_ahead_behind_status "$branch")
+        local sync_status
+        sync_status=$(get_ahead_behind_status "$branch")
 
         local status_display=""
-        if [[ -n "$status" ]]; then
-            status_display=$(printf "\033[36m%-8s\033[0m" "$status")
+        if [[ -n "$sync_status" ]]; then
+            status_display=$(printf "\033[36m%-8s\033[0m" "$sync_status")
         else
             status_display=$(printf "%-8s" "")
         fi
